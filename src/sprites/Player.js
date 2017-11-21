@@ -6,10 +6,13 @@ export default class extends Phaser.Sprite {
     super(game, x, y, asset)
     this.game = game
     this.anchor.setTo(2)
-    this.scale.setTo(0.8)
+    this.scale.setTo(1)
     this.game.physics.arcade.enable(this)
 
-    this.stuff = []
+    this.stuff = {
+      potion: 0,
+      gold: 0
+    }
     this.body.bounce.y = 0
     this.body.gravity.y = 0
     this.body.gravity.x = 0
@@ -17,6 +20,7 @@ export default class extends Phaser.Sprite {
     this.body.collideWorldBounds = true
     this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1)
     this.inventory = new Inventory(this, game, this.stuff)
+    this.body.setSize(30, 20, 13, 30)
     this.initMouvement()
     this.initAnimation()
   }
