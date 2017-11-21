@@ -18,7 +18,8 @@ export default class extends Phaser.State {
     this.load.image('map1Tiles1', 'assets/map1/tiles1.png')
     this.load.image('map1Tiles2', 'assets/map1/tiles2.png')
     this.load.image('map1Tiles3', 'assets/map1/tiles3.png')
-    this.load.image('mushroom', 'assets/images/mushroom2.png')
+    this.load.image('map1Tiles4', 'assets/map1/tiles4.png')
+    this.load.image('inventory', 'assets/images/inventory.png')
   }
 
   create () {

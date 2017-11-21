@@ -1,20 +1,22 @@
 import Phaser from 'phaser'
+import Inventory from './Inventory'
 
 export default class extends Phaser.Sprite {
   constructor ({ game, x, y, asset }) {
     super(game, x, y, asset)
     this.game = game
-    this.anchor.setTo(1)
-    this.scale.setTo(1)
+    this.anchor.setTo(2)
+    this.scale.setTo(0.8)
     this.game.physics.arcade.enable(this)
 
+    this.stuff = []
     this.body.bounce.y = 0
     this.body.gravity.y = 0
     this.body.gravity.x = 0
     this.body.velocity.x = 0
     this.body.collideWorldBounds = true
-    console.log(this)
     this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1)
+    this.inventory = new Inventory(this, game, this.stuff)
     this.initMouvement()
     this.initAnimation()
   }
