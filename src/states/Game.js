@@ -4,6 +4,7 @@ import Player from '../sprites/Player'
 import Potion from '../sprites/Potion'
 import Gold from '../sprites/Gold'
 import Box from '../sprites/Box'
+import Pnj from '../sprites/Pnj'
 export default class extends Phaser.State {
   init () {}
   preload () {}
@@ -43,6 +44,14 @@ export default class extends Phaser.State {
       y: this.world.centerY,
       asset: 'player'
     })
+    this.pnj = new Pnj({
+      game: this.game,
+      x: this.world.centerX + 200,
+      y: this.world.centerY + 200,
+      asset: 'pnjOne',
+      pnjId: 'Archer'
+    })
+    this.game.add.existing(this.pnj)
     this.game.add.existing(this.player)
 
     // Change the world size to match the size of this layer
@@ -52,6 +61,10 @@ export default class extends Phaser.State {
     this.game.physics.arcade.collide(this.player, this.groundLayer)
     this.game.physics.arcade.collide(this.player, this.groundLayer2)
     this.game.physics.arcade.collide(this.player, this.waterLayer)
+    this.game.physics.arcade.collide(this.player, this.pnj)
+    this.game.physics.arcade.collide(this.pnj, this.groundLayer)
+    this.game.physics.arcade.collide(this.pnj, this.groundLayer2)
+    this.game.physics.arcade.collide(this.pnj, this.waterLayer)
     this.items.map(item => {
       this.game.physics.arcade.collide(this.player, item)
     })

@@ -24,6 +24,10 @@ export default class extends Phaser.State {
     this.load.image('potion', 'assets/images/potion.png')
     this.load.image('gold', 'assets/images/gold.png')
     this.load.image('inventory', 'assets/images/inventory.png')
+
+    // PNJ
+    this.load.spritesheet('pnjOne', '/assets/pnj/pnjOne.png', 65, 64)
+    this.load.json('speechPnj', '/assets/pnj/pnj.json')
   }
 
   create () {
