@@ -70,10 +70,18 @@ export default class extends Phaser.Sprite {
   effectPotion () {
     if (this.stuff.potion && this.stuff.potion > 0) {
       this.closeInventory()
+      this.music = this.game.add.audio('drink')
+      this.music.play()
       var actualSpeed = this.player.speed
       this.player.speed += 300
+      var effectText = 'Vous courez plus vite pendant 10 secondes'
+      this.infoText = this.game.add.text(this.game.camera.width / 2, this.game.camera.width / 2, effectText, { font: '30px Arial', fill: '#fff' })
+      this.infoText.anchor.setTo(0.5, 0.5)
+      this.infoText.setTextBounds(0, 100, 800, 100)
+      this.infoText.fixedToCamera = true
       setTimeout(() => {
         this.player.speed = actualSpeed
+        this.infoText.destroy()
       }, 10000)
       this.stuff.potion--
     }

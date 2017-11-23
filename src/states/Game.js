@@ -54,6 +54,10 @@ export default class extends Phaser.State {
     this.game.add.existing(this.pnj)
     this.game.add.existing(this.player)
 
+    this.music = this.game.add.audio('gameSound')
+    this.music.play()
+    this.music.loopFull()
+
     // Change the world size to match the size of this layer
   }
 
@@ -96,7 +100,6 @@ export default class extends Phaser.State {
             asset: 'gold'
           }))
         } else if (object.type === 'box') {
-          console.log('box')
           this.box.push(new Box({
             game: this.game,
             x: object.x,
