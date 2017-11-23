@@ -71,10 +71,8 @@ export default class extends Phaser.Sprite {
       if (this.nbCollid % 2 === 0) {
         this.openDialog()
         this.game.input.keyboard.onDownCallback = (e) => {
-          if (e.keyCode === 13) {
-            if (this.game.paused !== false) {
-              this.closeDialog()
-            }
+          if (e.keyCode === 13 && this.game.paused) {
+            this.closeDialog()
           }
         }
       }
@@ -85,7 +83,7 @@ export default class extends Phaser.Sprite {
   openDialog () {
     if (this.game.paused === false) {
       this.game.paused = true
-      this.choiseLabel = this.game.add.text(this.game.camera.x + (this.game.width / 2), this.game.camera.y + (this.game.width / 2), this.info.text, { font: '30px Arial', fill: '#fff' })
+      this.choiseLabel = this.game.add.text(this.game.camera.x + (this.game.camera.width / 2), this.game.camera.y + (this.game.camera.width / 2), this.info.text, { font: '30px Arial', fill: '#fff' })
       this.choiseLabel.anchor.setTo(0.5, 0.5)
       this.choiseLabel.setTextBounds(0, 100, 800, 100)
     }

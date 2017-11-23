@@ -13,13 +13,17 @@ export default class extends Phaser.Sprite {
       potion: 0,
       gold: 0
     }
+    this.speed = 300
     this.body.bounce.y = 0
     this.body.gravity.y = 0
     this.body.gravity.x = 0
     this.body.velocity.x = 0
     this.body.collideWorldBounds = true
     this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1)
-    this.inventory = new Inventory(this, game, this.stuff)
+    this.inventory = new Inventory({
+      game: this.game,
+      player: this
+    })
     this.body.setSize(30, 20, 13, 30)
     this.initMouvement()
     this.initAnimation()
@@ -30,19 +34,20 @@ export default class extends Phaser.Sprite {
     this.body.velocity.x = 0
     if (this.upButton.isDown) {
       this.animations.play('top')
-      this.body.velocity.y = -300
+      this.body.velocity.y = -this.speed
     } else if (this.downButton.isDown) {
       this.animations.play('bottom')
-      this.body.velocity.y = 300
+      this.body.velocity.y = this.speed
     } else if (this.leftButton.isDown) {
       this.animations.play('left')
-      this.body.velocity.x = -300
+      this.body.velocity.x = -this.speed
     } else if (this.rightButton.isDown) {
       this.animations.play('right')
-      this.body.velocity.x = 300
+      this.body.velocity.x = this.speed
     } else {
       this.animations.stop()
     }
+    this.inventory.update()
   }
 
   initMouvement () {

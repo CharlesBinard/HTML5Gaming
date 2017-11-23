@@ -73,6 +73,7 @@ export default class extends Phaser.State {
       this.game.physics.arcade.collide(b, this.groundLayer)
       this.game.physics.arcade.collide(b, this.groundLayer2)
       this.game.physics.arcade.collide(b, this.waterLayer)
+      this.game.physics.arcade.collide(this.player, b)
     })
   }
   createItems () {

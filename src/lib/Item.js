@@ -8,7 +8,6 @@ export default class {
 
   deleteItem (item, player) {
     if (player.key === 'player') {
-      console.log(item)
       if (item.key === 'potion') {
         player.stuff.potion++
       }
