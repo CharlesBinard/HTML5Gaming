@@ -25,6 +25,12 @@ export default class extends Phaser.Sprite {
       this.game.paused = true
       this.bg = this.game.add.sprite(this.game.camera.x, this.game.camera.y + 200, 'inventory')
       this.bg.scale.setTo(0.5)
+
+      this.nameInventory = this.game.add.text(this.game.camera.x + 190, this.game.camera.y + 170, 'Inventaire', { font: '30px Arial', fill: '#000000' })
+      this.nameInventory.anchor.setTo(0.5, 0.5)
+      this.nameInventory.setTextBounds(0, 100, 800, 100)
+      this.nameInventory.fixedToCamera = true
+
       this.posItem = {
         x: this.game.camera.x + 50,
         y: this.game.camera.y + 100 + 200
@@ -61,6 +67,7 @@ export default class extends Phaser.Sprite {
   closeInventory () {
     this.game.paused = false
     this.bg.destroy()
+    this.nameInventory.destroy()
     if (this.potion) {
       this.potion.destroy()
       this.nbPotion.destroy()

@@ -47,14 +47,28 @@ export default class extends Phaser.Sprite {
   }
 
   openPnjInventory () {
-    console.log('Open inventory PNj')
-    this.bg = this.game.add.sprite(this.game.camera.x + 200, 210, 'inventory')
+    console.log('Open inventory PNJ')
+    this.bg = this.game.add.sprite(this.game.camera.x + 550, 210, 'inventory')
     this.bg.scale.setTo(0.5)
     this.bg.fixedToCamera = true
 
-    this.potion = this.game.add.sprite(this.game.camera.x + 250, 300, 'potion')
+    this.potion = this.game.add.sprite(this.game.camera.x + 600, 300, 'potion')
     this.potion.scale.setTo(0.2)
     this.potion.fixedToCamera = true
+    this.titlePotion = this.game.add.text(this.game.camera.x + 730, 240, 'Potion de vitesse', { font: '16px Arial', fill: '#fff' })
+    this.titlePotion.anchor.setTo(0.5, 0.5)
+    this.titlePotion.setTextBounds(0, 100, 800, 100)
+    this.titlePotion.fixedToCamera = true
+
+    this.titleInventory = this.game.add.text(this.game.camera.x + 740, 180, 'Vendeur', { font: '30px Arial', fill: '#000000' })
+    this.titleInventory.anchor.setTo(0.5, 0.5)
+    this.titleInventory.setTextBounds(0, 100, 800, 100)
+    this.titleInventory.fixedToCamera = true
+
+    this.nameInventory = this.game.add.text(180, 170, 'Inventaire', { font: '30px Arial', fill: '#000000' })
+    this.nameInventory.anchor.setTo(0.5, 0.5)
+    this.nameInventory.setTextBounds(0, 100, 800, 100)
+    this.nameInventory.fixedToCamera = true
 
     this.potion.inputEnabled = true
     this.potion.events.onInputDown.add(this.buyPotion, this)
@@ -63,6 +77,8 @@ export default class extends Phaser.Sprite {
   closePnjInventory () {
     console.log('Close PNJ INVENTORY')
     this.bg.destroy()
+    this.titleInventory.destroy()
+    this.nameInventory.destroy()
     if (this.potion) {
       this.potion.destroy()
     }
@@ -89,6 +105,7 @@ export default class extends Phaser.Sprite {
     this.player.inventory.closeInventory()
     this.vendorSpeech.destroy()
     if (this.buy === false) {
+      this.titlePotion.destroy()
       this.closePnjInventory()
     }
     if (this.buyDescribe) {
