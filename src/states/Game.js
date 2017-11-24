@@ -5,6 +5,7 @@ import Potion from '../sprites/Potion'
 import Gold from '../sprites/Gold'
 import Box from '../sprites/Box'
 import Pnj from '../sprites/Pnj'
+import Vendor from '../sprites/Vendor'
 export default class extends Phaser.State {
   init () {}
   preload () {}
@@ -51,6 +52,19 @@ export default class extends Phaser.State {
       asset: 'pnjOne',
       pnjId: 'Archer'
     })
+
+    this.vendor = new Vendor({
+      game: this.game,
+      // x: this.world.centerX + 1000,
+      // y: this.world.centerY + 1200,
+      x: this.world.centerX + 300,
+      y: this.world.centerY + 300,
+      asset: 'vendor',
+      pnjId: 'Vendor',
+      player: this.player
+    })
+
+    this.game.add.existing(this.vendor)
     this.game.add.existing(this.pnj)
     this.game.add.existing(this.player)
 
@@ -66,6 +80,7 @@ export default class extends Phaser.State {
     this.game.physics.arcade.collide(this.player, this.groundLayer2)
     this.game.physics.arcade.collide(this.player, this.waterLayer)
     this.game.physics.arcade.collide(this.player, this.pnj)
+    this.game.physics.arcade.collide(this.player, this.vendor)
     this.game.physics.arcade.collide(this.pnj, this.groundLayer)
     this.game.physics.arcade.collide(this.pnj, this.groundLayer2)
     this.game.physics.arcade.collide(this.pnj, this.waterLayer)

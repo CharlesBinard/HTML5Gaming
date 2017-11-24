@@ -83,13 +83,15 @@ export default class extends Phaser.Sprite {
   openDialog () {
     if (this.game.paused === false) {
       this.game.paused = true
-      this.choiseLabel = this.game.add.text(this.game.camera.x + (this.game.camera.width / 2), this.game.camera.y + (this.game.camera.width / 2), this.info.text, { font: '30px Arial', fill: '#fff' })
+      this.game.openByPnj = true
+      this.choiseLabel = this.game.add.text(this.game.camera.x + (this.game.width / 2), this.game.camera.y + (this.game.width / 2), this.info.text, { font: '30px Arial', fill: '#fff' })
       this.choiseLabel.anchor.setTo(0.5, 0.5)
       this.choiseLabel.setTextBounds(0, 100, 800, 100)
     }
   }
 
   closeDialog () {
+    this.game.openByPnj = false
     this.game.paused = false
     this.choiseLabel.destroy()
   }

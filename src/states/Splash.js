@@ -31,6 +31,7 @@ export default class extends Phaser.State {
 
     // PNJ
     this.load.spritesheet('pnjOne', '/assets/pnj/pnjOne.png', 65, 64)
+    this.load.spritesheet('vendor', '/assets/pnj/vendor.png', 65, 64)
     this.load.json('speechPnj', '/assets/pnj/pnj.json')
   }
 

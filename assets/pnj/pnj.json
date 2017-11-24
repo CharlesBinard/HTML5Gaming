@@ -3,8 +3,8 @@
 		"id" : "Archer",
 		"text":"Bienvenue dans le monde de Rylaz"
 	},
-	"Orc":{
-		"id" : "Orc",
-		"text":"You've got eyes. Find them yourself."
+	"Vendor":{
+		"id" : "Vendor",
+		"text":"Que veux tu achetez ? "
 	}
 }

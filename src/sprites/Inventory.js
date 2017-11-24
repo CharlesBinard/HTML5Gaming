@@ -6,10 +6,11 @@ export default class extends Phaser.Sprite {
     this.stuff = player.stuff
     this.player = player
   }
+
   inventory () {
     this.game.input.keyboard.onPressCallback = (e) => {
-      if (e === 'i') {
-        if (!this.game.paused) {
+      if (e === 'i' && !this.game.openByPnj) {
+        if (this.game.paused === false) {
           this.openInventory()
         } else {
           this.closeInventory()
@@ -17,7 +18,9 @@ export default class extends Phaser.Sprite {
       }
     }
   }
+
   openInventory () {
+    this.player.openByPnj = false
     if (this.game.paused === false) {
       this.game.paused = true
       this.bg = this.game.add.sprite(this.game.camera.x, this.game.camera.y + 200, 'inventory')
@@ -54,21 +57,22 @@ export default class extends Phaser.Sprite {
       }
     }
   }
+
   closeInventory () {
     this.game.paused = false
     this.bg.destroy()
-    if (this.stuff.potion > 0) {
+    if (this.potion) {
       this.potion.destroy()
       this.nbPotion.destroy()
     }
-    if (this.stuff.gold > 0) {
+    if (this.coin) {
       this.coin.destroy()
       this.nbCoin.destroy()
     }
   }
 
   effectPotion () {
-    if (this.stuff.potion && this.stuff.potion > 0) {
+    if (this.stuff.potion && this.stuff.potion > 0 && !this.game.openByPnj) {
       this.closeInventory()
       this.music = this.game.add.audio('drink')
       this.music.play()
@@ -85,8 +89,5 @@ export default class extends Phaser.Sprite {
       }, 10000)
       this.stuff.potion--
     }
-  }
-  update () {
-
   }
 }
