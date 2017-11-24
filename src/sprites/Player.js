@@ -27,6 +27,8 @@ export default class extends Phaser.Sprite {
     this.body.setSize(30, 20, 13, 30)
     this.initMouvement()
     this.initAnimation()
+    this.animations.play('bottom')
+    this.animations.stop()
   }
 
   update () {
