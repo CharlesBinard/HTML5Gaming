@@ -55,10 +55,8 @@ export default class extends Phaser.State {
 
     this.vendor = new Vendor({
       game: this.game,
-      // x: this.world.centerX + 1000,
-      // y: this.world.centerY + 1200,
-      x: this.world.centerX + 300,
-      y: this.world.centerY + 300,
+      x: this.world.centerX + 1000,
+      y: this.world.centerY + 1200,
       asset: 'vendor',
       pnjId: 'Vendor',
       player: this.player

@@ -48,19 +48,19 @@ export default class extends Phaser.Sprite {
 
   openPnjInventory () {
     console.log('Open inventory PNJ')
-    this.bg = this.game.add.sprite(this.game.camera.x + 550, 210, 'inventory')
+    this.bg = this.game.add.sprite(1550, 210, 'inventory')
     this.bg.scale.setTo(0.5)
     this.bg.fixedToCamera = true
 
-    this.potion = this.game.add.sprite(this.game.camera.x + 600, 300, 'potion')
+    this.potion = this.game.add.sprite(1600, 300, 'potion')
     this.potion.scale.setTo(0.2)
     this.potion.fixedToCamera = true
-    this.titlePotion = this.game.add.text(this.game.camera.x + 730, 240, 'Potion de vitesse', { font: '16px Arial', fill: '#fff' })
+    this.titlePotion = this.game.add.text(1730, 240, 'Potion de vitesse', { font: '16px Arial', fill: '#fff' })
     this.titlePotion.anchor.setTo(0.5, 0.5)
     this.titlePotion.setTextBounds(0, 100, 800, 100)
     this.titlePotion.fixedToCamera = true
 
-    this.titleInventory = this.game.add.text(this.game.camera.x + 740, 180, 'Vendeur', { font: '30px Arial', fill: '#000000' })
+    this.titleInventory = this.game.add.text(1740, 180, 'Vendeur', { font: '30px Arial', fill: '#000000' })
     this.titleInventory.anchor.setTo(0.5, 0.5)
     this.titleInventory.setTextBounds(0, 100, 800, 100)
     this.titleInventory.fixedToCamera = true
