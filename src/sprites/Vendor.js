@@ -37,7 +37,6 @@ export default class extends Phaser.Sprite {
         this.game.input.keyboard.onDownCallback = (e) => {
           if (e.keyCode === 13 && this.game.paused) {
             this.buy = false
-            console.log(this.buy)
             this.closeDialog()
           }
         }
@@ -47,7 +46,6 @@ export default class extends Phaser.Sprite {
   }
 
   openPnjInventory () {
-    console.log('Open inventory PNJ')
     this.bg = this.game.add.sprite(1550, 210, 'inventory')
     this.bg.scale.setTo(0.5)
     this.bg.fixedToCamera = true
@@ -75,7 +73,6 @@ export default class extends Phaser.Sprite {
   }
 
   closePnjInventory () {
-    console.log('Close PNJ INVENTORY')
     this.bg.destroy()
     this.titleInventory.destroy()
     this.nameInventory.destroy()
@@ -86,7 +83,6 @@ export default class extends Phaser.Sprite {
 
   openDialog () {
     if (this.game.paused === false) {
-      console.log('Open Dialog')
       this.player.inventory.openInventory()
       if (this.buy === false) {
         this.openPnjInventory()
@@ -108,7 +104,7 @@ export default class extends Phaser.Sprite {
       this.titlePotion.destroy()
       this.closePnjInventory()
     }
-    if (this.buyDescribe) {
+    if (this.buy) {
       setTimeout(() => {
         this.buyDescribe.destroy()
       }, 2000)
